@@ -1,0 +1,14 @@
+# 1️⃣ Check current branch
+git branch
+
+# 2️⃣ Create a new feature branch (change name as needed)
+git checkout -b feature/products-crud
+
+# 3️⃣ Add all changes
+git add .
+
+# 4️⃣ Commit changes with message
+git commit -m "Added Product CRUD APIs in backend"
+
+# 5️⃣ Push new branch to remote
+git push origin feature/products-crud

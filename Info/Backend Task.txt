@@ -1,0 +1,27 @@
+🔹 Recommended Backend Tasks While Frontend is Not Ready
+-------------------------------------------------------------------------------
+Product CRUD Fully Tested
+	GET all products ✅
+	GET single product ✅
+	POST new product ✅
+	PUT update product ✅
+	DELETE product ✅
+
+Prepare for Future Features
+	User Schema (name, email, password, role)
+	Cart Schema (user, products, quantity)
+	Order Schema (user, products, total, status)
+
+Auth Setup (Optional – backend ready)
+	Routes: /register, /login
+	JWT token generation + middleware
+
+Environment Setup
+	.env file for DB URL, JWT secret, PORT
+	Config folder ready (config/db.js)
+
+Testing
+	Use Postman to test all routes
+	Prepare sample JSON for frontend consumption
+
+-------------------------------------------------------------------------------
