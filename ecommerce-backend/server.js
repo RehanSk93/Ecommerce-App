@@ -1,42 +1,21 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const productRoutes = require("./routes/productRoutes");
+
+dotenv.config();
+connectDB();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Connection
-mongoose.connect("mongodb://localhost:27017/ecommerce-app", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => console.log("MongoDB Connected"))
-    .catch(err => console.log("err")
-    );
+// Test route
+app.get("/", (req, res) => res.send("Backend is working properly 🚀"));
 
-// Product Schema
-const ProductSchema = new mongoose.Schema({
-    name: String,
-    price: Number,
-    description: String
-});
-const Product = mongoose.model("Product", ProductSchema);
+// API routes
+app.use("/products", productRoutes);
 
-
-// Routes
-app.get("/", (req, res) => {
-    res.send("Backend is working properly 🚀");
-});
-
-app.get("/products", async (req, res) => {
-    const products = await Product.find();
-    res.json(products);
-});
-
-app.post("/products", async (req, res) => {
-    const product = new Product(req.body);
-    await product.save();
-    res.json(product);
-});
-
-app.listen(5000, () => console.log("Server running on port 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
